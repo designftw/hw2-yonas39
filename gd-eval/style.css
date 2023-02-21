@@ -1,0 +1,41 @@
+.grapics {
+  /* background-color: rgb(162, 153, 153); */
+  background-color: rgba(246, 240, 240, 0.913);
+  /* margin-top: 0px; */
+}
+.title_1 {
+  background-color: rgb(4, 0, 11);
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  /* margin-right: 580px; */
+}
+.title_2 {
+  margin-left: 30px;
+}
+.paragraph_inline {
+  margin-left: 60px;
+}
+.all_pragraphs {
+  margin-left: 30px;
+  margin-right: 50px;
+}
+/* .footer {
+  text-align: right;
+ background-color: rgb(4, 0, 11);
+  color: white;  } */
+.images {
+  align-items: center;
+}
+.grid {
+  background-color: gray;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 0px;
+  grid-template-columns: 300px 300px;
+  padding: 10px;
+}
+.grid_images {
+  padding: 10px;
+  /* background-color: black; */
+}
