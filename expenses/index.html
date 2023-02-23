@@ -1,29 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Expenses</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div id="app">
-	<!--
-		Copy the class spreadsheet and replace the URL below with your own spreadsheet so you can save!
-		Make your spreadsheet publicly writable so you can save without logging in.
-	  -->
-	  <ma-data v-model="expenses"
-	  src="https://docs.google.com/spreadsheets/d/1z6zAHPmiP0T1y1EtSmiYHNAe7mksbFXC_AflELZqZmg/edit#gid=0"
-	  :options='{
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenses</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!--
+				Copy the class spreadsheet and replace the URL below with your own spreadsheet so you can save!
+				Make your spreadsheet publicly writable so you can save without logging in.
+			-->
+      <ma-data
+        v-model="expenses"
+        src="Expenses_app.xlsx"
+        :options='{
 		  headerRow: true,
 		  keys: ["title", "trinity_paid", "neo_paid", "trinity_paid_for_neo", "neo_paid_for_trinity"]
-	  }'></ma-data>
+	  }'
+      ></ma-data>
 
-	<!-- App UI here -->
-</div>
+      <!-- App UI here -->
 
-<script src="index.js" type="module"></script>
+      <!-- <h1>computed-total-{{total_balance}}</h1> -->
+      <!-- <table>
+        <tr>
+          <td>neo_paid</td>
+          <td>trinity_paid</td>
+          <td>trinity_paid_for_neo</td>
+          <td>neo_paid_for_trinity</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number" placeholder="0" v-model="expenses.neo_paid" />
+          </td>
+          <td>
+            <input
+              type="number"
+              placeholder="0"
+              v-model="expenses.trinity_paid"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              placeholder="0"
+              v-model="expenses.trinity_paid_for_neo"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              placeholder="0"
+              v-model="expenses.neo_paid_for_trinity"
+            />
+          </td>
+        </tr>
+      </table>
+      <button type="submit">Add expense</button>
+      <p>The net pay out is ---- {{total_balance}}</p> -->
+      <table>
+        <thead>
+          <tr>
+            <th>neo_paid</th>
+            <th>trinity_paid</th>
+            <th>trinity_paid_for_neo</th>
+            <th>neo_paid_for_trinity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(expense, index) in expenses" :key="index">
+            <td><input type="number" v-model="expenses.neo_paid" /></td>
+            <td>
+              <input type="number" v-model.number="expenses.trinity_paid" />
+            </td>
+            <td>
+              <input
+                type="number"
+                v-model.number="expenses.trinity_paid_for_neo"
+              />
+            </td>
+            <td>
+              <input type="number" v-model="expenses.neo_paid_for_trinity" />
+            </td>
+            <!-- <td>{{ row.quantity * row.price }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+      <button @click="addExpense">Add Expense</button>
 
-</body>
+      <p>The net payable is ---- {{total_balance}}</p>
+    </div>
+
+    <script src="index.js" type="module"></script>
+  </body>
 </html>
